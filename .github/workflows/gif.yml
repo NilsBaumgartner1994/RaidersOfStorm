@@ -1,0 +1,25 @@
+name: Generate GIF
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  generate-gif:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Website to file
+        uses: PabloLec/website-to-gif@2.0.2
+        with:
+          url: "https://docs.github.com/en/get-started"
+          save_path: "docs/gif/"
+          file_name: "github-docs.gif"
+      - name: Commit file to GH repo
+        run: |
+          git config --global user.name "PabloLec/website-to-gif"
+          git config --global user.email "action@github.com"
+          git add .
+          git commit -m 'Update file'
+          git push
