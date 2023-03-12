@@ -1,6 +1,9 @@
 import React, {useEffect, useRef, useState} from "react";
 import {Input, ScrollView, Spacer, Text, View} from "native-base";
 import {Animated, Easing, Image, ImageBackground} from "react-native";
+import {MyTouchableOpacity} from "../../../components/buttons/MyTouchableOpacity";
+import {BasePadding} from "kitcheningredients";
+import {MyButton} from "../../../components/buttons/MyButton";
 
 const image_bg = require("../../../assets/traveling/plain/backgrounds/bg.png");
 const image_clouds = require("../../../assets/traveling/plain/backgrounds/bg_clouds.png");
@@ -14,6 +17,8 @@ export const TravelingExample = (props) => {
 	const dimensions = props?.dimension;
 	const width = dimensions?.width;
 	const height = dimensions?.height;
+
+	const [camera_speed, setCameraSpeed] = useState(100);
 
 	const layer1 = useRef(new Animated.Value(0)).current;
 	const layer2 = useRef(new Animated.Value(0)).current;
@@ -43,7 +48,6 @@ export const TravelingExample = (props) => {
 		if(!!width && !!height){
 			const widthInInt = parseInt(width);
 			// Define the animation loop for camera_speed
-			const camera_speed = 100
 
 			const toValue = widthInInt;
 			console.log("toValue: ", toValue);
@@ -53,7 +57,7 @@ export const TravelingExample = (props) => {
 			moveLayer(layer4, -toValue, parallax_speed(20, camera_speed));
 			moveLayer(layer5, -toValue, parallax_speed(10, camera_speed));
 		}
-	}, [layer1, layer2, layer3, dimensions]);
+	}, [layer1, layer2, layer3, dimensions, camera_speed]);
 
 	function parallax_speed(distance_to_layer_from_window, observer_velocity){
 		const distance_to_layer_from_user = distance_to_layer_from_window + 10;
@@ -161,17 +165,52 @@ export const TravelingExample = (props) => {
 		)
 	}
 
+	function renderLayers(){
+		return (
+			<View style={{width: width, height: height, overflow: 'hidden', position: "absolute"}}>
+				<View style={{width: width, height: height, overflow: 'hidden', justifyContent: "flex-end", position: "absolute", bottom: ground_height}}>
+					{renderBackground()}
+					{renderClouds()}
+					{renderFar()}
+					{renderNear()}
+				</View>
+				<View style={{width: width, height: height, backgroundColor: "transparent", overflow: 'hidden', justifyContent: "flex-end", position: "absolute", bottom: 0}}>
+					{renderGround()}
+				</View>
+			</View>
+		)
+	}
+
+	function renderUI(){
+		return(
+			<BasePadding>
+				<MyButton accessibilityLabel={"Button"} onPress={() => {
+					const min_speed = 50;
+					const default_speed = 100;
+					const max_speed = 500;
+
+					if(camera_speed===min_speed){
+						setCameraSpeed(default_speed);
+					} else if(camera_speed === max_speed) {
+						setCameraSpeed(min_speed);
+					} else {
+						let next_speed = camera_speed + 100;
+						if(next_speed > max_speed){
+							next_speed = max_speed;
+						}
+						setCameraSpeed(next_speed);
+					}
+				}}>
+					<Text>{"Increase Speed: "+camera_speed}</Text>
+				</MyButton>
+			</BasePadding>
+		)
+	}
+
 	return(
-		<View style={{width: width, height: height, overflow: 'hidden'}}>
-			<View style={{width: width, height: height, overflow: 'hidden', justifyContent: "flex-end", position: "absolute", bottom: ground_height}}>
-				{renderBackground()}
-				{renderClouds()}
-				{renderFar()}
-				{renderNear()}
-			</View>
-			<View style={{width: width, height: height, backgroundColor: "transparent", overflow: 'hidden', justifyContent: "flex-end", position: "absolute", bottom: 0}}>
-				{renderGround()}
-			</View>
+		<View style={{width: width, height: height}}>
+			{renderLayers()}
+			{renderUI()}
 		</View>
 	)
 }
