@@ -1,7 +1,7 @@
 {
   "files": {
-    "app.js": "/RaidersOfStorm/static/js/app.9af5abd1.chunk.js",
-    "app.js.map": "/RaidersOfStorm/static/js/app.9af5abd1.chunk.js.map",
+    "app.js": "/RaidersOfStorm/static/js/app.427c2acc.chunk.js",
+    "app.js.map": "/RaidersOfStorm/static/js/app.427c2acc.chunk.js.map",
     "runtime~app.js": "/RaidersOfStorm/static/js/runtime~app.5265ca3f.js",
     "runtime~app.js.map": "/RaidersOfStorm/static/js/runtime~app.5265ca3f.js.map",
     "static/js/2.f6c2ac6d.chunk.js": "/RaidersOfStorm/static/js/2.f6c2ac6d.chunk.js",
@@ -33,6 +33,6 @@
   "entrypoints": [
     "static/js/runtime~app.5265ca3f.js",
     "static/js/2.f6c2ac6d.chunk.js",
-    "static/js/app.9af5abd1.chunk.js"
+    "static/js/app.427c2acc.chunk.js"
   ]
 }
