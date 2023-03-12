@@ -74,6 +74,7 @@
     "@types/react-dom": "^16.9.9",
     "@unimodules/core": "^5.1.2",
     "@unimodules/react-native-adapter": "^5.7.0",
+    "gh-pages": "^4.0.0",
     "axios": "^0.21.4",
     "ci": "^2.1.1",
     "cross-env": "^7.0.3",
