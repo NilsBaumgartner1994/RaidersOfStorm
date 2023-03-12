@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "255946994388",
+    "project_id": "rocketmeals-6ed2e",
+    "storage_bucket": "rocketmeals-6ed2e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:255946994388:android:f91d5d207b8560737c0141",
+        "android_client_info": {
+          "package_name": "de.fireboltcasters.rocketmealsdemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "255946994388-a1dv0p9m1a16qug67a11aantqo811r7h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRs887tfbYkrplHwx5m0JYV9IS_v8lMLM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "255946994388-a1dv0p9m1a16qug67a11aantqo811r7h.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "255946994388-u55g5i839krkb0aihjajj312ln5jpn5b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "de.fireboltcasters.rocketmealsdemo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
