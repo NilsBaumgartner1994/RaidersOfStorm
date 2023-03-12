@@ -16,8 +16,8 @@ export function useJSONState(storageKey): [value: any, setValue: (value) => {}] 
 }
 
 export function useDebugMode(): [value: any, setValue: (value) => {}] {
-    const [demo, setDemo] = useJSONState(StorageKeys.CACHED_DEBUG_MODE);
-    return [demo===true, setDemo]; //why ever demo is an object?
+    let [debug, setDebug] = useJSONState(StorageKeys.CACHED_DEBUG_MODE);
+    return [debug===true, setDebug]; //why ever demo is an object?
 }
 
 export function useDemoMode(): [value: any, setValue: (value) => {}] {

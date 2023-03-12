@@ -36,19 +36,20 @@ import {KeyboardAvoidingScrollviewExample} from "./screens/debug/inputs/Keyboard
 import {NotificationExample} from "./screens/debug/notification/NotificationExample";
 import {MapLeaflet} from "./screens/debug/map/MapLeaflet";
 import {ExampleSettingsRow} from "./screens/debug/systemAndStyle/ExampleSettingsRow";
-
-const debugMenu = new MenuItem({
-	key: "debug",
-	label: "Debug",
-	icon: "bug",
-	position: -1,
-});
+import {TravelingExample} from "./screens/debug/game/TravelingExample";
 
 export default class Project extends PluginInterface{
 	private setProfile: any;
+	static debugMenu;
 
 	constructor() {
 		super();
+		Project.debugMenu = new MenuItem({
+			key: "debug",
+			label: "Debug",
+			icon: "bug",
+			position: -1,
+		});
 	}
 
 	getSynchedStateKeysClass(){
@@ -97,6 +98,13 @@ export default class Project extends PluginInterface{
 	private static registerDebugMenus(){
 		let debugMenu = Project.getDebugMenu();
 
+		let debugGameMenu = new MenuItem({
+			key: "debugGame",
+			label: "DebugGame",
+		});
+		Project.registerRouteAndGetDefaultMenuItems(debugGameMenu, [TravelingExample], EmptyTemplate);
+		debugMenu.addChildMenuItems([debugGameMenu]);
+
 		let debugAccessibilityMenu = new MenuItem({
 			key: "debugAccessibility",
 			label: "Debug Accessibility",
@@ -144,11 +152,11 @@ export default class Project extends PluginInterface{
 		 */
 	}
 
-	static registerRouteAndGetDefaultMenuItems(menu: MenuItem, listOfFunctionComponents){
+	static registerRouteAndGetDefaultMenuItems(menu: MenuItem, listOfFunctionComponents, template = BaseTemplate){
 		for(let fc of listOfFunctionComponents){
 			let route = Navigation.routeRegister({
 				component: fc,
-				template: BaseTemplate,
+				template: template,
 			})
 			menu.addChildMenuItems([MenuItem.fromRoute(route)]);
 		}
@@ -228,7 +236,7 @@ export default class Project extends PluginInterface{
 	 */
 
 	static getDebugMenu(): MenuItem {
-		return debugMenu
+		return Project.debugMenu
 	}
 
 }
