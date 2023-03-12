@@ -63,7 +63,7 @@ export const TravelingExample = (props) => {
 	}
 
 	return(
-		<View style={{width: width, height: height, backgroundColor: "orange"}}>
+		<View style={{width: width, height: height, backgroundColor: "orange", overflow: 'hidden'}}>
 			{renderBackground()}
 			{renderClouds()}
 			{renderFar()}
