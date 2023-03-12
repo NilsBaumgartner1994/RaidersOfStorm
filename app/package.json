@@ -30,6 +30,7 @@
     "build:web": "expo build:web --no-pwa --clear --dev",
     "prebuild:web:pwa": "npm run prebuild",
     "build:web:pwa": "expo build:web",
+    "deploy:ghpages": "npm run build:web && gh-pages -d web-build",
     "predeploy:web:local": "npm run build:web",
     "deploy:web:local": "npm run serve:web:local",
     "serve:web:local": "npx serve web-build --cors --single",

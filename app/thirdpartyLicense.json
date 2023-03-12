@@ -10444,6 +10444,12 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/RaidersOfStorm/app/node_modules/raf",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/RaidersOfStorm/app/node_modules/raf/LICENSE"
   },
+  "raidersofstorm@1.0.0": {
+    "licenses": "UNLICENSED",
+    "private": true,
+    "path": "/Users/nbaumgartner/Documents/GitHub/RaidersOfStorm/app",
+    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/RaidersOfStorm/app/LICENSE"
+  },
   "ramda@0.27.2": {
     "licenses": "MIT",
     "repository": "https://github.com/ramda/ramda",
@@ -11188,12 +11194,6 @@
     "repository": "https://github.com/crypto-browserify/ripemd160",
     "path": "/Users/nbaumgartner/Documents/GitHub/RaidersOfStorm/app/node_modules/ripemd160",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/RaidersOfStorm/app/node_modules/ripemd160/LICENSE"
-  },
-  "rocketmeals@1.0.0": {
-    "licenses": "UNLICENSED",
-    "private": true,
-    "path": "/Users/nbaumgartner/Documents/GitHub/RaidersOfStorm/app",
-    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/RaidersOfStorm/app/LICENSE"
   },
   "router-ips@1.0.0": {
     "licenses": "MIT",
