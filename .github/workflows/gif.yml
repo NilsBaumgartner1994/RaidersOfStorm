@@ -13,9 +13,9 @@ jobs:
       - name: Website to file
         uses: PabloLec/website-to-gif@2.0.2
         with:
-          url: "https://docs.github.com/en/get-started"
+          url: "https://nilsbaumgartner1994.github.io/RaidersOfStorm/#/TravelingExample"
           save_path: "/docs/gif/"
-          file_name: "github-docs.gif"
+          file_name: "traveling_example"
       - name: Commit file to GH repo
         run: |
           git config --global user.name "PabloLec/website-to-gif"
