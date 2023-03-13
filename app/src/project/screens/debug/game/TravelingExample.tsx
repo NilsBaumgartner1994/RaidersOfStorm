@@ -1,9 +1,10 @@
-import React, {useEffect, useRef, useState} from "react";
-import {Input, ScrollView, Spacer, Text, View} from "native-base";
-import {Animated, Easing, Image, ImageBackground} from "react-native";
-import {MyTouchableOpacity} from "../../../components/buttons/MyTouchableOpacity";
+import React, {useRef, useState} from "react";
+import {View} from "native-base";
+import {Animated, Image} from "react-native";
 import {BasePadding} from "kitcheningredients";
-import {MyButton} from "../../../components/buttons/MyButton";
+import {TravelingExampleUISpeedControl} from "./TravelingExampleUISpeedControl";
+import {TravelingLayer} from "./TravelingLayer";
+import ScaledImage from "./ScaledImage";
 
 const image_bg = require("../../../assets/traveling/plain/backgrounds/bg.png");
 const image_clouds = require("../../../assets/traveling/plain/backgrounds/bg_clouds.png");
@@ -30,114 +31,41 @@ export const TravelingExample = (props) => {
 
 	const bg_height = height-ground_height;
 
-	function moveLayer(layer, toValue, duration) {
-		Animated.timing(layer, {
-			toValue,
-			duration,
-			easing: Easing.linear,
-			useNativeDriver: true,
-		}).start(({ finished }) => {
-			if (finished) {
-				layer.setValue(0);
-				moveLayer(layer, toValue, duration);
-			}
-		});
-	};
-
-	useEffect(() => {
-		if(!!width && !!height){
-			const widthInInt = parseInt(width);
-			// Define the animation loop for camera_speed
-
-			const toValue = widthInInt;
-			console.log("toValue: ", toValue);
-			moveLayer(layer1, -toValue, parallax_speed(10000, camera_speed));
-			moveLayer(layer2, -toValue, parallax_speed(3000, camera_speed));
-			moveLayer(layer3, -toValue, parallax_speed(500, camera_speed));
-			moveLayer(layer4, -toValue, parallax_speed(20, camera_speed));
-			moveLayer(layer5, -toValue, parallax_speed(10, camera_speed));
-		}
-	}, [layer1, layer2, layer3, dimensions, camera_speed]);
-
-	function parallax_speed(distance_to_layer_from_window, observer_velocity){
-		const distance_to_layer_from_user = distance_to_layer_from_window + 10;
-		return 250*(distance_to_layer_from_window / distance_to_layer_from_user) * (100*(100/observer_velocity));
+	function renderLayer(children, animatedValue, layerHeight, distance){
+		return <TravelingLayer width={width} height={layerHeight} repeatChildren={true} distance={distance} camera_speed={camera_speed} >
+			{children}
+		</TravelingLayer>
 	}
 
-	function renderLayer(children, animatedValue, layerHeight){
-		const marginLeft = -1; // -1 to hide the border
-		const renderedLayer = (
-			<Animated.View
-				style={{ transform: [{ translateX: animatedValue }], height: layerHeight, width: width, marginLeft: marginLeft}}
-			>
-				{children}
-			</Animated.View>
-		)
-
-		return <View style={{position: "absolute", width: width, height: layerHeight}}>
-			<View style={{ flexDirection: 'row' }}>
-				{renderedLayer}
-				{renderedLayer}
-				{renderedLayer}
-			</View>
-		</View>
-	}
-
-	function renderImageLayer(imageSrc, animatedValue){
-		const child = <Image source={imageSrc} style={{width: width, height: bg_height}}/>
-		return renderLayer(child, animatedValue, bg_height);
+	function renderImageLayer(imageSrc, animatedValue, distance){
+		const child = <ScaledImage source={imageSrc} height={bg_height} key={bg_height+""} />
+		return renderLayer(child, animatedValue, bg_height, distance);
 	}
 
 	function renderBackground(){
-		return renderImageLayer(image_bg, layer1);
+		return renderImageLayer(image_bg, layer1, 50000);
 	}
 
 	function renderClouds(){
-		return renderImageLayer(image_clouds, layer2);
+		return renderImageLayer(image_clouds, layer2, 1000);
 	}
 
 	function renderFar(){
-		return renderImageLayer(image_bg_far, layer3);
+		return renderImageLayer(image_bg_far, layer3, 500);
 	}
 
 	function renderNear(){
-		return renderImageLayer(image_bg_near, layer4);
+		return renderImageLayer(image_bg_near, layer4, 50);
 	}
 
 	function renderGround(){
 		const child = renderGroundTiles();
-		return renderLayer(child, layer5, ground_height);
+		return renderLayer(child, layer5, ground_height, 10);
 	}
 
 	function renderGroundTiles(){
 		return (
 			<View style={{ width: width, height: ground_height, flexDirection: "row" }}>
-				{renderGroundTile()}
-				{renderGroundTile()}
-				{renderGroundTile()}
-				{renderGroundTile()}
-				{renderGroundTile()}
-				{renderGroundTile()}
-				{renderGroundTile()}
-				{renderGroundTile()}
-				{renderGroundTile()}
-				{renderGroundTile()}
-				{renderGroundTile()}
-				{renderGroundTile()}
-				{renderGroundTile()}
-				{renderGroundTile()}
-				{renderGroundTile()}
-				{renderGroundTile()}
-				{renderGroundTile()}
-				{renderGroundTile()}
-				{renderGroundTile()}
-				{renderGroundTile()}
-				{renderGroundTile()}
-				{renderGroundTile()}
-				{renderGroundTile()}
-				{renderGroundTile()}
-				{renderGroundTile()}
-				{renderGroundTile()}
 				{renderGroundTile()}
 			</View>
 		)
@@ -184,31 +112,13 @@ export const TravelingExample = (props) => {
 	function renderUI(){
 		return(
 			<BasePadding>
-				<MyButton accessibilityLabel={"Button"} onPress={() => {
-					const min_speed = 50;
-					const default_speed = 100;
-					const max_speed = 500;
-
-					if(camera_speed===min_speed){
-						setCameraSpeed(default_speed);
-					} else if(camera_speed === max_speed) {
-						setCameraSpeed(min_speed);
-					} else {
-						let next_speed = camera_speed + 100;
-						if(next_speed > max_speed){
-							next_speed = max_speed;
-						}
-						setCameraSpeed(next_speed);
-					}
-				}}>
-					<Text>{"Increase Speed: "+camera_speed}</Text>
-				</MyButton>
+				<TravelingExampleUISpeedControl camera_speed={camera_speed} setCameraSpeed={setCameraSpeed}/>
 			</BasePadding>
 		)
 	}
 
 	return(
-		<View style={{width: width, height: height}}>
+		<View style={{width: width, height: height, position: "absolute"}}>
 			{renderLayers()}
 			{renderUI()}
 		</View>
