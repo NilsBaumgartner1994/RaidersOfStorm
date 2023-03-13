@@ -10,8 +10,10 @@ const image_bg = require("../../../assets/traveling/plain/backgrounds/bg.png");
 const image_clouds = require("../../../assets/traveling/plain/backgrounds/bg_clouds.png");
 const image_bg_far = require("../../../assets/traveling/plain/backgrounds/bg_parallaxFar.png");
 const image_bg_near = require("../../../assets/traveling/plain/backgrounds/bg_parallaxNear.png");
+const image_bg_mountains = require("../../../assets/traveling/plain/backgrounds/bg_mountains.png");
 
 const image_ground_tileset = require("../../../assets/traveling/plain/ground/Tileset.png");
+const image_ground_03 = require("../../../assets/traveling/plain/ground/ground-03.png");
 
 export const TravelingExample = (props) => {
 
@@ -26,6 +28,7 @@ export const TravelingExample = (props) => {
 	const layer3 = useRef(new Animated.Value(0)).current;
 	const layer4 = useRef(new Animated.Value(0)).current;
 	const layer5 = useRef(new Animated.Value(0)).current;
+	const layer6 = useRef(new Animated.Value(0)).current;
 
 	const ground_height = 64;
 
@@ -37,25 +40,9 @@ export const TravelingExample = (props) => {
 		</TravelingLayer>
 	}
 
-	function renderImageLayer(imageSrc, animatedValue, distance){
-		const child = <ScaledImage source={imageSrc} height={bg_height} key={bg_height+""} />
-		return renderLayer(child, animatedValue, bg_height, distance);
-	}
-
-	function renderBackground(){
-		return renderImageLayer(image_bg, layer1, 50000);
-	}
-
-	function renderClouds(){
-		return renderImageLayer(image_clouds, layer2, 1000);
-	}
-
-	function renderFar(){
-		return renderImageLayer(image_bg_far, layer3, 500);
-	}
-
-	function renderNear(){
-		return renderImageLayer(image_bg_near, layer4, 50);
+	function renderImageLayer(imageSrc, animatedValue, distance, height){
+		const child = <ScaledImage source={imageSrc} height={height} key={height+""} />
+		return renderLayer(child, animatedValue, height, distance);
 	}
 
 	function renderGround(){
@@ -97,10 +84,11 @@ export const TravelingExample = (props) => {
 		return (
 			<View style={{width: width, height: height, overflow: 'hidden', position: "absolute"}}>
 				<View style={{width: width, height: height, overflow: 'hidden', justifyContent: "flex-end", position: "absolute", bottom: ground_height}}>
-					{renderBackground()}
-					{renderClouds()}
-					{renderFar()}
-					{renderNear()}
+					{renderImageLayer(image_bg, layer1, 500000, bg_height)}
+					{renderImageLayer(image_clouds, layer2, 500, bg_height)}
+					{renderImageLayer(image_bg_mountains, layer6, 10000, bg_height)}
+					{renderImageLayer(image_bg_far, layer3, 500, bg_height)}
+					{renderImageLayer(image_bg_near, layer4, 50, bg_height)}
 				</View>
 				<View style={{width: width, height: height, backgroundColor: "transparent", overflow: 'hidden', justifyContent: "flex-end", position: "absolute", bottom: 0}}>
 					{renderGround()}

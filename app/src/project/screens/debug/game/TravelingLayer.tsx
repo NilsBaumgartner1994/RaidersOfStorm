@@ -57,8 +57,8 @@ export const TravelingLayer: FunctionComponent<AppState>  = (props) => {
     }, [animatedValue, width, height, camera_speed, multipleChildrenToFillScreenWidth]);
 
     function parallax_speed(distance_to_layer_from_window, observer_velocity){
-        const distance_to_layer_from_user = distance_to_layer_from_window + 10;
-        const durationFloat = 250*(distance_to_layer_from_window / distance_to_layer_from_user) * (100*(100/observer_velocity))
+        const distance_to_layer_from_user = distance_to_layer_from_window + 250;
+        const durationFloat = 250*(distance_to_layer_from_window / distance_to_layer_from_user) * (250*(250/observer_velocity))
         return parseInt(durationFloat+"");
     }
 
