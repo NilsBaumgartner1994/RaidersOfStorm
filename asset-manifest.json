@@ -1,11 +1,11 @@
 {
   "files": {
-    "app.js": "/RaidersOfStorm/static/js/app.13d9ebf1.chunk.js",
-    "app.js.map": "/RaidersOfStorm/static/js/app.13d9ebf1.chunk.js.map",
+    "app.js": "/RaidersOfStorm/static/js/app.d5d13a54.chunk.js",
+    "app.js.map": "/RaidersOfStorm/static/js/app.d5d13a54.chunk.js.map",
     "runtime~app.js": "/RaidersOfStorm/static/js/runtime~app.5265ca3f.js",
     "runtime~app.js.map": "/RaidersOfStorm/static/js/runtime~app.5265ca3f.js.map",
-    "static/js/2.cb0f8fa2.chunk.js": "/RaidersOfStorm/static/js/2.cb0f8fa2.chunk.js",
-    "static/js/2.cb0f8fa2.chunk.js.map": "/RaidersOfStorm/static/js/2.cb0f8fa2.chunk.js.map",
+    "static/js/2.d1b1e97b.chunk.js": "/RaidersOfStorm/static/js/2.d1b1e97b.chunk.js",
+    "static/js/2.d1b1e97b.chunk.js.map": "/RaidersOfStorm/static/js/2.d1b1e97b.chunk.js.map",
     "fonts/AntDesign.ttf": "/RaidersOfStorm/./fonts/AntDesign.ttf",
     "fonts/Entypo.ttf": "/RaidersOfStorm/./fonts/Entypo.ttf",
     "fonts/Feather.ttf": "/RaidersOfStorm/./fonts/Feather.ttf",
@@ -32,7 +32,7 @@
   },
   "entrypoints": [
     "static/js/runtime~app.5265ca3f.js",
-    "static/js/2.cb0f8fa2.chunk.js",
-    "static/js/app.13d9ebf1.chunk.js"
+    "static/js/2.d1b1e97b.chunk.js",
+    "static/js/app.d5d13a54.chunk.js"
   ]
 }
