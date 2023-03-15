@@ -10566,6 +10566,13 @@
     "path": "/Users/nbaumgartner/Documents/GitHub/RaidersOfStorm/app/node_modules/react-error-overlay",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/RaidersOfStorm/app/node_modules/react-error-overlay/LICENSE"
   },
+  "react-game-engine@1.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/bberak/react-game-engine",
+    "publisher": "Boris Berak",
+    "path": "/Users/nbaumgartner/Documents/GitHub/RaidersOfStorm/app/node_modules/react-game-engine",
+    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/RaidersOfStorm/app/node_modules/react-game-engine/LICENSE"
+  },
   "react-is@18.2.0": {
     "licenses": "MIT",
     "repository": "https://github.com/facebook/react",
@@ -10622,6 +10629,13 @@
     "url": "http://originerd.com",
     "path": "/Users/nbaumgartner/Documents/GitHub/RaidersOfStorm/app/node_modules/react-native-fit-image",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/RaidersOfStorm/app/node_modules/react-native-fit-image/LICENSE"
+  },
+  "react-native-game-engine@1.2.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/bberak/react-native-game-engine",
+    "publisher": "Boris Berak",
+    "path": "/Users/nbaumgartner/Documents/GitHub/RaidersOfStorm/app/node_modules/react-native-game-engine",
+    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/RaidersOfStorm/app/node_modules/react-native-game-engine/LICENSE"
   },
   "react-native-gesture-handler@1.8.0": {
     "licenses": "MIT",
@@ -11295,6 +11309,14 @@
     "url": "https://github.com/Reactive-Extensions/RxJS/blob/master/authors.txt",
     "path": "/Users/nbaumgartner/Documents/GitHub/RaidersOfStorm/app/node_modules/rx-lite",
     "licenseFile": "/Users/nbaumgartner/Documents/GitHub/RaidersOfStorm/app/node_modules/rx-lite/readme.md"
+  },
+  "rxjs@7.5.7": {
+    "licenses": "Apache-2.0",
+    "repository": "https://github.com/reactivex/rxjs",
+    "publisher": "Ben Lesh",
+    "email": "ben@benlesh.com",
+    "path": "/Users/nbaumgartner/Documents/GitHub/RaidersOfStorm/app/node_modules/rxjs",
+    "licenseFile": "/Users/nbaumgartner/Documents/GitHub/RaidersOfStorm/app/node_modules/rxjs/LICENSE.txt"
   },
   "safe-buffer@5.1.2": {
     "licenses": "MIT",

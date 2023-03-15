@@ -37,6 +37,7 @@ import {NotificationExample} from "./screens/debug/notification/NotificationExam
 import {MapLeaflet} from "./screens/debug/map/MapLeaflet";
 import {ExampleSettingsRow} from "./screens/debug/systemAndStyle/ExampleSettingsRow";
 import {TravelingExample} from "./screens/debug/game/TravelingExample";
+import {ReactNativeGameEngineExample} from "./screens/debug/game/rnge/ReactNativeGameEngineExample";
 
 export default class Project extends PluginInterface{
 	private setProfile: any;
@@ -102,7 +103,7 @@ export default class Project extends PluginInterface{
 			key: "debugGame",
 			label: "DebugGame",
 		});
-		Project.registerRouteAndGetDefaultMenuItems(debugGameMenu, [TravelingExample], EmptyTemplate);
+		Project.registerRouteAndGetDefaultMenuItems(debugGameMenu, [TravelingExample, ReactNativeGameEngineExample], EmptyTemplate);
 		debugMenu.addChildMenuItems([debugGameMenu]);
 
 		let debugAccessibilityMenu = new MenuItem({
